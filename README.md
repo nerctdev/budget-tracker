@@ -46,3 +46,6 @@ MIT
 ---
 
 Built by [nerct.dev](https://nerct.dev)
+
+**Live app:** https://nerct.dev/budget-tracker/
+**More unique apps:** https://nerct.dev
