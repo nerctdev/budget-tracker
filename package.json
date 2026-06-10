@@ -1,0 +1,15 @@
+{
+  "name": "budget-tracker",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Personal budget tracker with multi-currency and i18n support",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

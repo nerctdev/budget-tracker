@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Budget Tracker — manage your personal finances" />
+  <meta name="theme-color" content="#1a1a2e" />
+  <title>Budget Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- Header -->
+    <header class="app-header">
+      <h1 class="app-title">Budget Tracker</h1>
+      <div class="header-controls">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Controls bar -->
+    <section class="controls-bar">
+      <div class="control-group">
+        <label for="languageSelect" class="visually-hidden">Language</label>
+        <select id="languageSelect" class="select-input">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+          <option value="ja">日本語</option>
+          <option value="zh">中文</option>
+          <option value="id">Bahasa Indonesia</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="currencySelect" class="visually-hidden">Currency</label>
+        <select id="currencySelect" class="select-input"></select>
+      </div>
+    </section>
+
+    <!-- Balance Card -->
+    <section class="card balance-card" aria-label="Balance">
+      <div class="balance-header">
+        <span data-i18n="currentBalance">Current Balance</span>
+        <button id="resetBtn" class="text-btn" data-i18n="reset">Reset</button>
+      </div>
+      <p class="balance-amount" id="balanceDisplay">$0.00</p>
+      <div class="balance-details">
+        <div class="detail-item income">
+          <span class="detail-label" data-i18n="income">Income</span>
+          <span class="detail-value" id="incomeDisplay">$0.00</span>
+        </div>
+        <div class="detail-item expense">
+          <span class="detail-label" data-i18n="expenses">Expenses</span>
+          <span class="detail-value" id="expenseDisplay">$0.00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Budget Progress -->
+    <section class="card budget-card" aria-label="Budget progress">
+      <div class="budget-header">
+        <span data-i18n="budgetProgress">Budget Progress</span>
+        <span class="budget-percent" id="budgetPercent">0%</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="budget-hint" id="budgetHint" data-i18n="budgetHint">Add income to get started</p>
+    </section>
+
+    <!-- Add Transaction -->
+    <section class="card form-card" aria-label="Add transaction">
+      <h2 class="card-title" data-i18n="addTransaction">Add Transaction</h2>
+      <form id="transactionForm" class="transaction-form" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="transDate" class="field-label" data-i18n="date">Date</label>
+            <input type="date" id="transDate" class="text-input" required />
+          </div>
+          <div class="form-field">
+            <label for="transType" class="field-label" data-i18n="type">Type</label>
+            <select id="transType" class="select-input">
+              <option value="income" data-i18n="income">Income</option>
+              <option value="expense" data-i18n="expense">Expense</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="transDesc" class="field-label" data-i18n="description">Description</label>
+          <input type="text" id="transDesc" class="text-input" placeholder="e.g. Freelance payment" required maxlength="100" />
+        </div>
+        <div class="form-field">
+          <label for="transAmount" class="field-label" data-i18n="amount">Amount</label>
+          <input type="number" id="transAmount" class="text-input" placeholder="0.00" min="0.01" step="0.01" required />
+        </div>
+        <button type="submit" class="btn-primary" data-i18n="addTransaction">Add Transaction</button>
+      </form>
+    </section>
+
+    <!-- Transaction History -->
+    <section class="card history-card" aria-label="Transaction history">
+      <h2 class="card-title" data-i18n="history">Transaction History</h2>
+      <div id="transactionList" class="transaction-list">
+        <p class="empty-state" data-i18n="noTransactions">No transactions yet</p>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
